@@ -4,63 +4,63 @@ import java.util.Objects;
 
 public class Employee {
     private final int id;
-    public String first_name;
-    public String last_name;
-    public String gender_name;
+    public String firstName;
+    public String lastName;
+    public String genderName;
     public int age;
-    public int city_id;
+    public int cityId;
 
-    public Employee(int id, String first_name, String last_name, String gender_name, int age, int city_id) {
+    public Employee(int id, String firstName, String lastName, String gender_name, int age, int cityId) {
         this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.gender_name = gender_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.genderName = gender_name;
         this.age = age;
-        this.city_id = city_id;
+        this.cityId = cityId;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setGender_name(String gender_name) {
-        this.gender_name = gender_name;
+    public void setGenderName(String genderName) {
+        this.genderName = genderName;
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    public void setCity_id(int city_id) {
-        this.city_id = city_id;
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public String getGender_name() {
-        return gender_name;
+    public String getGenderName() {
+        return genderName;
     }
 
     public int getAge() {
         return age;
     }
 
-    public int getCity_id() {
-        return city_id;
+    public int getCityId() {
+        return cityId;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class Employee {
         if (this == o) return true;
         if (!(o instanceof Employee)) return false;
         Employee employee = (Employee) o;
-        return age == employee.age && id == employee.id && first_name.equals(employee.first_name) && last_name.equals(employee.last_name) && gender_name.equals(employee.gender_name) && Objects.equals(city_id, employee.city_id);
+        return age == employee.age && id == employee.id && firstName.equals(employee.firstName) && lastName.equals(employee.lastName) && genderName.equals(employee.genderName) && Objects.equals(cityId, employee.cityId);
     }
 
     @Override
@@ -80,11 +80,11 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", gender_name='" + gender_name + '\'' +
+                ", first_name='" + firstName + '\'' +
+                ", last_name='" + lastName + '\'' +
+                ", gender_name='" + genderName + '\'' +
                 ", age=" + age +
-                ", city_id=" + city_id +
+                ", cityId=" + cityId +
                 "}\n";
     }
 }

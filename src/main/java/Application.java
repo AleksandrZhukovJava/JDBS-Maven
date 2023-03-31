@@ -4,11 +4,9 @@ public class Application {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/skypro";
     private static final String DB_USER = "postgres";
     private static final String DB_PASS = "helloskypro";
-
     public static void main(String[] args) {
         runApplication();
     }
-
     private static void runApplication() {
 
         //task 1
@@ -28,11 +26,9 @@ public class Application {
             i.printStackTrace();
         }
     }
-
     private static Connection doConnection() throws SQLException {
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
     }
-
     public static void printnEmployeeById(int id) {
         try (Connection connection = doConnection(); PreparedStatement preparedStatement = connection.prepareStatement(
                 "SELECT first_name, last_name, gender, age, c.city_name  FROM employee e LEFT JOIN city c on c.city_id = e.city_id WHERE e.id = ?;")) {

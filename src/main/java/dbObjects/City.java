@@ -3,24 +3,24 @@ package dbObjects;
 import java.util.Objects;
 
 public class City {
-    private final int city_id;
-    private String city_name;
+    private final int cityId;
+    private String cityName;
 
     public City(int city_id, String city_name) {
-        this.city_id = city_id;
-        this.city_name = city_name;
+        this.cityId = city_id;
+        this.cityName = city_name;
     }
 
-    public int getCity_id() {
-        return city_id;
+    public int getCityId() {
+        return cityId;
     }
 
-    public String getCity_name() {
-        return city_name;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setCity_name(String city_name) {
-        this.city_name = city_name;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
     @Override
@@ -28,19 +28,19 @@ public class City {
         if (this == o) return true;
         if (!(o instanceof City)) return false;
         City city = (City) o;
-        return city_id == city.city_id && city_name.equals(city.city_name);
+        return cityId == city.cityId && cityName.equals(city.cityName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city_id);
+        return Objects.hash(cityId);
     }
 
     @Override
     public String toString() {
         return "City{" +
-                "city_id=" + city_id +
-                ", city_name='" + city_name + '\'' +
+                "cityId=" + cityId +
+                ", cityName='" + cityName + '\'' +
                 '}';
     }
 }
