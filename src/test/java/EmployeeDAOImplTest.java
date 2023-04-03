@@ -18,6 +18,6 @@ public class EmployeeDAOImplTest {
         Employee employeeTest = new Employee("Test", "Test", "Test", 20, 1);
         employeeDAO.addEmployee(employeeTest);
         employeeDAO.deleteEmployee(employeeTest);
-        assertFalse(employeeDAO.returnAllEmployee().contains(employeeDAO));
+        assertFalse(employeeDAO.returnAllEmployee().contains(employeeTest));
     }
 }
