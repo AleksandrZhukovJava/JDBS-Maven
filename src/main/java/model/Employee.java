@@ -2,19 +2,21 @@ package model;
 
 import lombok.*;
 import javax.persistence.*;
-@AllArgsConstructor
+
+@org.hibernate.annotations.NamedQueries({
+        @org.hibernate.annotations.NamedQuery(name = "Employee_all",
+                query = "from Employee") //почему то, не видит orm.xml с этими настройками
+        })
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode (of = "id")
 @Entity
 @Table (name = "employee")
 public class Employee {
     @Id
     @Column (name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column (name = "first_name", length = 50, nullable = false)
     private String firstName;
     @Column (name = "last_name", length = 50, nullable = false)
@@ -23,14 +25,25 @@ public class Employee {
     private String gender;
     @Column (name = "age", nullable = false)
     private int age;
-    @Column (name = "city_id")
-    private Integer cityId;
-
-    public Employee(String firstName, String lastName, String gender, int age, Integer cityId) {
+    @ManyToOne (cascade = CascadeType.PERSIST, fetch = FetchType.LAZY) //Почему то в базу не добавляется город при добавлении сотрудника
+    @JoinColumn (name = "city_id")
+    private City city;
+    public Employee(String firstName, String lastName, String gender, int age, City city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
-        this.cityId = cityId;
+        this.city = city;
+    }
+    @Override
+    public String toString() {
+        return "Employee {" +
+                "id = " + id +
+                ", firstName = '" + firstName + '\'' +
+                ", lastName = '" + lastName + '\'' +
+                ", gender = '" + gender + '\'' +
+                ", age = " + age +
+                ", city = " + (city == null ? "unknown" : city.getCityName()) +
+                '}';
     }
 }

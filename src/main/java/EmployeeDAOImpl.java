@@ -1,50 +1,37 @@
 import model.Employee;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import java.util.List;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
-
+    private final Session session;
+    public EmployeeDAOImpl(Session session) {
+        this.session = session;
+    }
     @Override
     public void addEmployee(Employee employee) {
-        try (Session session = HibernateSessionUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.save(employee);
+            session.persist(employee);
             transaction.commit();
-        }
     }
-
     @Override
-    public Employee returnEmployeeById(int id) {
-        try (Session session = HibernateSessionUtil.getSessionFactory().openSession()) {
+    public Employee returnEmployeeById(Long id) {
             return session.get(Employee.class, id);
-        }
     }
-
     @Override
     public List<Employee> returnAllEmployee() {
-        try(Session session = HibernateSessionUtil.getSessionFactory().openSession()){
-            return session.createQuery("FROM Employee").getResultList();
-        }
+            return session.createNamedQuery("Employee_all", Employee.class).list();
     }
-
     @Override
-    public void updateEmployee(Employee employee, int id){
-        try(Session session = HibernateSessionUtil.getSessionFactory().openSession()){
+    public void updateEmployee(Employee employee, Long id) {
             Transaction transaction = session.beginTransaction();
             employee.setId(id);
-            session.update(employee);
             transaction.commit();
-        }
     }
-
     @Override
-    public void deleteEmployee(Employee employee){
-        try(Session session = HibernateSessionUtil.getSessionFactory().openSession()){
+    public void deleteEmployee(Employee employee) {
             Transaction transaction = session.beginTransaction();
             session.delete(employee);
             transaction.commit();
-        }
     }
 }
