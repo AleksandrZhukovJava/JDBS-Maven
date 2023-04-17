@@ -25,7 +25,7 @@ public class Employee {
     private String gender;
     @Column (name = "age", nullable = false)
     private int age;
-    @ManyToOne (cascade = CascadeType.PERSIST, fetch = FetchType.LAZY) //Почему то в базу не добавляется город при добавлении сотрудника
+    @ManyToOne (cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn (name = "city_id")
     private City city;
     public Employee(String firstName, String lastName, String gender, int age, City city) {

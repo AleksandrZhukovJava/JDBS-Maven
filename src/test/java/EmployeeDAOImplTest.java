@@ -68,11 +68,13 @@ public class EmployeeDAOImplTest {
         cityDAO.deleteCity(cityTest);
     }
     @Test
-    @DisplayName("Employee auto deleting after city deleting")
+    @DisplayName("Employee auto creating and deleting after city deleting")
     public void shouldAddCityAndEmployee() {
         cityDAO.addCity(cityTest);
         cityTest.addEmployee(employeeTestTwo);
         cityTest.addEmployee(employeeTestOne);
+        cityDAO.updateCity(cityTest,cityTest.getCityId());
+        assertTrue(employeeDAO.returnAllEmployee().contains(employeeTestTwo) && employeeDAO.returnAllEmployee().contains(employeeTestOne));
         cityDAO.deleteCity(cityTest);
         assertFalse(employeeDAO.returnAllEmployee().contains(employeeTestOne) && employeeDAO.returnAllEmployee().contains(employeeTestTwo));
 

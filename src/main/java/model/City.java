@@ -22,7 +22,7 @@ public class City {
     private Long cityId;
     @Column(name = "city_name", length = 168, nullable = false)
     private String cityName;
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Employee> employeeList = new ArrayList<>();
     public City(String cityName) {
         this.cityName = cityName;
