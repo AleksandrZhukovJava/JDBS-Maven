@@ -3,7 +3,6 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateSessionUtil {
     private static SessionFactory sessionFactory;
-
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
