@@ -4,7 +4,6 @@ A simple application for managing company employees, implementing all basic CRUD
 
 
 Technology stack:
-* Spring Boot 
 * PostgreSQL 
-* JDBC
-* Mock and JUnit
+* JPA, Hibernate
+
